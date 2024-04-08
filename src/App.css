@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+
+}
+
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: fit-content;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.cardHeight {
+  height: 290px;
+}
+
+.graph {
+  display: flex;
+  justify-content: space-between;
+  /* Add space between components */
+}
+
+.GraphComponents,
+.GraphComponents2 {
+  flex: 1;
+  /* Each component takes equal space */
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 430px;
+  height: 500px;
+}
+
+.piechart {
+  display: flex;
+  justify-content: flex-start;
+  /* Align the pie chart to the left side */
+  margin-left: 50%;
+  /* Move the pie chart to the center of the left side */
+  transform: translateX(-29%);
+  /* Center the pie chart horizontally */
+  width: 100%;
+  padding: 5%;
+}
+
+
+.button {
+  display: flex;
+  position: relative;
+
+
+}
+
+.graph-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+
+.graph {
+  margin: 10px;
+}
+
+.graph-container {
+  display: flex;
+}
+
+.graph-card {
+  flex: 1;
+  margin-right: 10px;
+  /* Add some spacing between the two cards */
+}
