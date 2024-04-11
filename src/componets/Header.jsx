@@ -8,7 +8,7 @@ import './Header.css';
 
 const MyHeader = () => {
   return (
-<Header as="h1" style={{ position: 'fixed', top: -5, width: '100%', zIndex: 999, backgroundColor: 'white'}}>
+<Header as="h1" style={{ position: 'fixed', top: -5, width: '100%', zIndex: 999, backgroundColor: 'white', boxShadow:" rgba(0, 0, 0, 0.2) 4px 3.2px 40.2px" }}>
   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
     <Image className='image1' src={image} alt="" />
     <div>

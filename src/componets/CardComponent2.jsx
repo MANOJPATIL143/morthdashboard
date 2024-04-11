@@ -11,7 +11,7 @@ const CardWithModal = () => {
   return (
     <>
       <div className="card2">
-        <Card className="cardHeight" style={{ height: `300px` }}>
+        <Card className="cardHeight" style={{ height: `270px`, width:"100%" , margin:  `15px` }}>
           <Card.Body>
             <table >
               <tr>
@@ -30,7 +30,7 @@ const CardWithModal = () => {
                 <td>20</td>
               </tr>
               <tr>
-                <td>Monitoring Center Go Live</td>
+                <td>Monitoring Center Go</td>
                 <td>11</td>
               </tr>
             </table>
@@ -42,13 +42,18 @@ const CardWithModal = () => {
                 border: "none",
                 display: "flex",
                 alignItems: "center",
+                position:"absolute",
+                bottom: "0",
+                backgroundColor:" white",
+                opacity:' 0.5'
               }}
               onClick={openModal}
             >
               <i
                 class="fa fa-exclamation-triangle"
                 aria-hidden="true"
-                style={{ marginRight: "5px", color:"#93BE52"}}
+                style={{ marginRight: "5px", color:"#93BE52",bottom: "0",
+              }}
               />
               view all
             </Button>
@@ -56,7 +61,8 @@ const CardWithModal = () => {
         </Card>
       </div>
 
-      <Modal show={showModal} onHide={closeModal}>
+      <Modal show={showModal} onHide={closeModal} size="xl">
+
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <table id="customers">

@@ -52,12 +52,13 @@
   display: flex;
   justify-content: flex-start;
   /* Align the pie chart to the left side */
-  margin-left: 50%;
+  margin-left: 35%;
   /* Move the pie chart to the center of the left side */
-  transform: translateX(-29%);
-  /* Center the pie chart horizontally */
-  width: 100%;
-  padding: 5%;
+  transform: translateX(-27%);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 34%;
+ 
 }
 
 

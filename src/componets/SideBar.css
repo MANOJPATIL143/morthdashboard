@@ -1,12 +1,13 @@
 .sidebar {
   background-color: white;
   color: black;
-  width: 250px;
+  width: 280px;
   height: 100%;
   padding: 10px;
   position: fixed;
   text-align: left;
   font-size: small;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 3);
 }
 
 .sidebar a {

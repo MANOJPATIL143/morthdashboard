@@ -1,71 +1,149 @@
-import React, { useState } from "react";
-import { Button, Card, Modal } from "react-bootstrap";
-import "./CardComponent.css";
+import React, { useEffect, useState } from "react";
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import { Button, Modal } from "react-bootstrap"; // import Button and Modal from react-bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"; // import the Bootstrap CSS
+import "./GraphComponents.css";
 
-const CardWithModal = () => {
+function Chart() {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+  useEffect(() => {
+    let root = am5.Root.new("chartdiv1");
+
+    root.setThemes([am5themes_Animated.new(root)]);
+
+    let chart = root.container.children.push(
+      am5xy.XYChart.new(root, {
+        panY: false,
+        layout: root.verticalLayout,
+      })
+    );
+
+    // Define data
+    let data = [
+      {
+        category: "Maharastra",
+        value1: 15000,
+        value2: 58081,
+      },
+      {
+        category: "Gujrat",
+        value1: 14000,
+        value2: 18800,
+      },
+      {
+        category: "Bihar",
+        value1: 85500,
+        value2: 123,
+      },
+      {
+        category: "UP",
+        value1: 12000,
+        value2: 18200,
+      },
+      {
+        category: "Maharastra",
+        value1: 15000,
+        value2: 58081,
+      },
+      {
+        category: "Gujrat",
+        value1: 14000,
+        value2: 18800,
+      },
+      {
+        category: "Bihar",
+        value1: 85500,
+        value2: 123,
+      },
+      {
+        category: "UP",
+        value1: 12000,
+        value2: 18200,
+      },
+    ];
+
+    // Create Y-axis
+    let yAxis = chart.yAxes.push(
+      am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, {}),
+      })
+    );
+
+    // Create X-Axis
+    let xAxis = chart.xAxes.push(
+      am5xy.CategoryAxis.new(root, {
+        renderer: am5xy.AxisRendererX.new(root, {}),
+        categoryField: "category",
+      })
+    );
+    xAxis.data.setAll(data);
+
+    // Create series
+    let series1 = chart.series.push(
+      am5xy.ColumnSeries.new(root, {
+        name: "Series",
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: "value1",
+        categoryXField: "category",
+      })
+    );
+    series1.data.setAll(data);
+
+    let series2 = chart.series.push(
+      am5xy.ColumnSeries.new(root, {
+        name: "Series",
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: "value2",
+        categoryXField: "category",
+      })
+    );
+    series2.data.setAll(data);
+
+    // Add legend
+    let legend = chart.children.push(am5.Legend.new(root, {}));
+    legend.data.setAll(chart.series.values);
+
+    // Add cursor
+    chart.set("cursor", am5xy.XYCursor.new(root, {}));
+
+    return () => {
+      root.dispose();
+    };
+  }, []);
 
   return (
-    <>
-      <div className="card2">
-        <Card className="cardHeight" style={{ height: `270px`, width:"100%" , margin:  `15px` }}>
-          <Card.Body>
-            <table>
-              <tr>
-              <p  style={{ color: '#4680ff',fontSize:"medium" }}>Aplication Status</p>
-              </tr>
-              <tr>
-                <td>Submission To Morth</td>
-                <td>33</td>
-              </tr>
-              <tr>
-                <td>Approved By Morth</td>
-                <td>33</td>
-              </tr>
-              <tr>
-                <td>MoU Signed By Morth</td>
-                <td>33</td>
-              </tr>
-              <tr>
-                <td>Fund Disbursal</td>
-                <td>33</td>
-              </tr>
-              
-            </table>
-
-            <Button
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                border: "none",
-                display: "flex",
-                alignItems: "center",
-                position:"absolute",
-                bottom: "0",
-                backgroundColor:" white",
-                opacity:' 0.5'
-               
-              }}
-              onClick={openModal}
-            >
-              <i
-                class="fa fa-exclamation-triangle"
-                aria-hidden="true"
-                style={{ marginRight: "5px", color:"#4680ff" }}
-              />
-              view all
-            </Button>
-          </Card.Body>
-        </Card>
-      </div>
-
+    <div >
+     <div className="card2">
+  <div id="chartdiv1" style={{ width:"100%", height:"280px"}}></div>
+</div>
+      <Button
+        style={{
+          backgroundColor: "white",
+          color: "black",
+          border: "none",
+          display: "flex",
+          justifyContent: "flex-end",
+          right: "43%",
+          alignItems: "center",
+          position: "absolute",
+          bottom: "-30%",
+        }}
+        onClick={openModal}
+      >
+        View All
+      </Button>
       <Modal show={showModal} onHide={closeModal} size="xl">
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-        <table id="customers">
+          <div className="table-responsive">
+            <table id="customers">
               <thead>
                 <tr>
                   <th>SR NO</th>
@@ -364,6 +442,7 @@ const CardWithModal = () => {
                 </tr>
               </tbody>
             </table>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -374,8 +453,8 @@ const CardWithModal = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
-};
+}
 
-export default CardWithModal;
+export default Chart;

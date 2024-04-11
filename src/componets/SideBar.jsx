@@ -25,14 +25,14 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`sidebar ${isSidebarVisible ? "" : "hidden"}`}>
+    <div className ={`sidebar ${isSidebarVisible ? "" : "hidden"}`}>
       {/* <button onClick={toggleSidebar}>Menu</button> */}
       <div>
         <button
           style={{
             position: "absolute",
-            top: "10%",
-            right: "0",
+            top: '6%',
+            right: '-31px',
             transform: "translateY(-50%)",
           }}
           className="fullScreen"
